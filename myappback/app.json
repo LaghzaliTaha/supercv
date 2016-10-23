@@ -1,0 +1,6 @@
+{
+  "name": "Spring Boot Heroku Demo",
+  "description": "This is a small demo application for showing how to run a Spring Boot application on Heroku.",
+  "repository": "https://laghza_taha@bitbucket.org/laghza_taha/mysupercv.git",
+  "addons": [ "heroku-postgresql" ]
+}

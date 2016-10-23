@@ -1,0 +1,543 @@
+<script type="text/ng-template" id="form-messages">
+    <div ng-message="required">Cannot be blank</div>
+    <div ng-message="minlength">Too short</div>
+    <div ng-message="maxlength">Too long</div>
+    <div ng-message="email">Invalid email</div>
+    <div ng-message="pattern">You did not enter the value in the correct format</div>
+    <div ng-message="password-characters">
+        Your password must consist of alphabetical or numeric characters.
+        It must also contain at least one special character, a number as well as an uppercase letter.
+    </div>
+</script>
+<div  ng-controller="SigninFormController" ng-init="app.settings.container = false;">
+    <link rel="stylesheet" href="css/home.css">
+    <span id="page-acceuil">
+    <nav class="nav-acceuil ">
+        <header class="header-login-signup">
+
+            <div class="header-limiter">
+
+                <h1><a class="js-scrollTo" >MySuper<span>CV</span></a></h1>
+
+                <nav>
+                    <a  href="#home" class="js-scrollTo">Home</a>
+                    <a  href="#premuim" class="js-scrollTo">Premuim</a>
+                    <a  href="#carousel" class="js-scrollTo">catalog</a>
+                    <a  href="#contact" class="js-scrollTo">contact us</a>
+
+                </nav>
+
+                <ul>
+                    <li><a  class="sama"  ng-click="signIn()">Login</a></li>
+                    <li><a ng-click="signUp()">Sign up</a></li>
+                </ul>
+
+            </div>
+
+        </header>
+
+    </nav>
+
+    <div id="home" class="responisve-container ">
+        <div class="slider ">
+            <div class="fs_loader"></div>
+            <div class="slide slide1">
+
+
+                <p 		class="claim  big" style="font-size: x-large"
+                          data-position="200,30" data-in="top" data-step="1" data-out="top">Now Create Resume Is So Easy </p>
+
+
+                <p 		class="teaser "
+                          data-position="270,100" data-in="bottom" data-step="2" data-delay="500">Editing in real time</p>
+                <p 		class="teaser "
+                          data-position="320,100" data-in="bottom" data-step="2" data-delay="1500">Creative</p>
+                <p 		class="teaser "
+                          data-position="370,100" data-in="bottom" data-step="2" data-delay="2500">Beautiful design</p>
+                <p 		class="teaser "
+                          data-position="420,100" data-in="bottom" data-step="2" data-delay="3500">Multiple design</p>
+                <p 		class="teaser "
+                          data-position="470,100" data-in="bottom" data-step="2" data-delay="4500">easy to use</p>
+
+                <img 	src="img/cv-template-avant.png"
+                        data-position="220,500" data-step="2" data-in="fade" data-delay="600" data-out="bottomRight">
+                <img 	src="img/cv-template-brooklyn.png"
+                        data-position="270,500" data-step="2" data-in="fade" data-delay="2600" data-out="bottomRight">
+                <img 	src="img/1439122260634.png"
+                        data-position="320,500" data-step="2" data-in="fade" data-delay="4600" data-out="bottomRight">
+                <p 		class="start" style="padding-top: 2%;padding-left: 1%;text-align: center"
+                          data-position="520,150" data-in="bottom" data-step="2" data-delay="6000"data-out="bottom" data-ease-in="easeOutBounce">Create <br> One!</p>
+
+
+            </div>
+            <div class="slide slide2" >
+                <p 		class="claim  big" style="font-size: x-large"
+                          data-position="250,400" data-in="top" data-step="1" data-out="top" data-ease-in="easeOutBounce">Create Your Free or Premium Account</p>
+
+                <p 		class="teaser "
+                          data-position="300,500" data-in="left" data-step="2" data-delay="500">CUSTOM DOMAIN</p>
+                <p 		class="teaser "
+                          data-position="300,500" data-in="left" data-step="2" data-special="cycle" data-delay="3000">ACCESS TO ALL RESUME DESIGNS</p>
+                <p 		class="teaser "
+                          data-position="300,500" data-in="left" data-step="2" data-special="cycle" data-delay="6000" >ADVANCED ANALYTICS</p>
+                <p 		class="teaser "
+                          data-position="300,500" data-in="left" data-step="2" data-special="cycle" data-delay="9000" >UNLIMITED AND MULTILINGUAL RESUMES</p>
+                <p 		class="teaser "
+                          data-position="300,500" data-in="left" data-step="2" data-special="cycle" data-delay="12000" >UNLIMITED PORTFOLIOS</p>
+                <p 		class="teaser "
+                          data-position="300,500" data-in="left" data-step="2" data-special="cycle" data-delay="15000" >UNLIMITED ACCESS TO THE COLORPICKER</p>
+
+
+
+
+
+                <img 	src="img/multiple-domains-management.png"
+                        data-position="400,250" data-step="2"  data-in="bottomLeft" data-delay="500" data-out="none" style="width: 120px;height: 120px">
+                <img 	src="img/cv-template-online-resume-verge.png"
+                        data-position="400,400" data-step="2"  data-in="bottomLeft" data-delay="3000" data-out="none"  style="width: 120px;height: 120px">
+                <img 	src="img/icon-analysis2.png"
+                        data-position="400,550" data-step="2"  data-in="bottomLeft" data-delay="6000" data-out="none"  style="width: 120px;height: 120px">
+                <img 	src="img/globe_flags.png"
+                        data-position="400,700" data-step="2"  data-in="bottomLeft" data-delay="9000" data-out="none"  style="width: 120px;height: 120px">
+                <img 	src="img/portfolio.png"
+                        data-position="400,850" data-step="2"  data-in="bottomLeft" data-delay="12000" data-out="none"  style="width: 120px;height: 120px">
+                <img 	src="img/unnamed.png"
+                        data-position="400,1000" data-step="2"  data-in="bottomLeft" data-delay="15000" data-out="none"  style="width: 120px;height: 120px">
+                <p 		class="premium" style="padding-top: 3%;padding-left: 1%;text-align: center"
+                          data-position="550,650" data-in="bottom" data-step="2" data-delay="18000" data-out="bottom" data-ease-in="easeOutBounce" >Premum <br> Now!</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div  id="catalog" class="catalog"  >
+        <h1 class="wow pulse "   data-wow-duration="3000ms">Why write a resume on MySuperCV ?</h1>
+        <div class="row">
+        <div class=" wow slideInRight col-lg-4 col-md-4 col-xs-4 text1" data-wow-duration="2000ms" data-wow-delay="4s"><h3 class="block-title">Write a resume
+            without all the fuss</h3><p>DoYouBuzz is an app that helps you create a web, pdf and mobile format resume in just a couple of minutes. No need to be a computer geek!</p></div>
+        <div class=" wow bounceInLeft col-lg-4 col-md-4 col-xs-4 text2" data-wow-offset="300"><h3 class="block-title">Stand out without
+            worrying about the layout</h3><p>Stand out thanks to our resume templates all the while respecting recruiters criteria requirements. Don't panic about the layout, DoYouBuzz does the job!</p></div>
+        <div class=" wow slideInLeft col-lg-4 col-md-4 col-xs-4 text3" data-wow-duration="8s"><h3 class="block-title">To be visible
+            and create new opportunities</h3><p>Visible on Google, Facebook and Twitter optimisation, get some job opportunities or other responsibilities with your resume right now.</p></div>
+
+        </div>
+
+    </div>
+    <div id="carousel" >
+        <span id="back" class="backward" style="display: block;"></span>
+        <span id="next" class="forward" style="display: block;"></span>
+        <a href="#"><img src="img/cv-1.png" id="item-1" /></a>
+        <a href="#"><img src="img/cv-2.jpg" id="item-2" /></a>
+        <a href="#"><img src="img/cv-3.jpg" id="item-3" /></a>
+        <a href="#"><img src="img/cv-4.jpg" id="item-4" /></a>
+        <a href="#"><img src="img/cv-5.png" id="item-5" /></a>
+        <a href="#"><img src="img/cv-6.jpg" id="item-6" /></a>
+        <a href="#"><img src="img/cv-7.png" id="item-7" /></a>
+        <a href="#"><img src="img/cv-8.png" id="item-8" /></a>
+        <a href="#"><img src="img/cv-9.jpg" id="item-9" /></a>
+        <a href="#"><img src="img/cv-1.png" id="item-10" /></a>
+        <a href="#"><img src="img/cv-2.jpg" id="item-11" /></a>
+        <a href="#"><img src="img/cv-3.jpg" id="item-12" /></a>
+        <a href="#"><img src="img/cv-4.jpg" id="item-13" /></a>
+        <a href="#"><img src="img/cv-5.png" id="item-14" /></a>
+        <a href="#"><img src="img/cv-6.jpg" id="item-15" /></a>
+        <a href="#"><img src="img/cv-7.png" id="item-16" /></a>
+        <a href="#"><img src="img/cv-8.png" id="item-17" /></a>
+        <a href="#"><img src="img/cv-9.jpg" id="item-18" /></a>
+    </div>
+        <div id="premuim">
+<div class="pricing-plans">
+    <div class="wrap">
+        <div class="price-head wow zoomIn">
+            <h1>Get Your Premuim Account now ! </h1>
+        </div>
+
+
+        <div class="pricing-grids">
+            <div class="pricing-grid1 wow bounceInLeft">
+                <div class="price-value">
+                    <h2><a href="#"> BASIC</a></h2>
+                    <h5><span>$ 19.99</span><lable> / month</lable></h5>
+                    <div class="sale-box">
+                        <span class="on_sale title_shop">NEW</span>
+                    </div>
+
+                </div>
+                <div class="price-bg">
+                    <ul>
+                        <li class="whyt"><a href="#">illimited Theme Resume </a></li>
+                        <li><a href="#">PortFolio</a></li>
+                        <li class="whyt"><a href="#">Multilangage </a></li>
+                        <li><a href="#">Custum domaine </a></li>
+                        <li class="whyt"><a href="#">Advanced Analis</a></li>
+                    </ul>
+                    <div class="cart1">
+                        <a class="popup-with-zoom-anim" href="#small-dialog">Purchase</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pricing-grid2 wow bounceInUp">
+                <div class="price-value two">
+                    <h3><a href="#">STANDARD</a></h3>
+                    <h5><span>$ 29.99</span><lable> / month</lable></h5>
+                    <div class="sale-box two">
+                        <span class="on_sale title_shop">NEW</span>
+                    </div>
+
+                </div>
+                <div class="price-bg">
+                    <ul>
+                        <li class="whyt"><a href="#">illimited Theme Resume </a></li>
+                        <li><a href="#">PortFolio</a></li>
+                        <li class="whyt"><a href="#">Multilangage </a></li>
+                        <li><a href="#">Custum domaine </a></li>
+                        <li class="whyt"><a href="#">Advanced Analis</a></li>
+                    </ul>
+                    <div class="cart2">
+                        <a class="popup-with-zoom-anim" href="#small-dialog">Purchase</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pricing-grid3 wow bounceInRight">
+                <div class="price-value three">
+                    <h4><a href="#">PREMIUM</a></h4>
+                    <h5><span>$ 49.99</span><lable> / month</lable></h5>
+                    <div class="sale-box three">
+                        <span class="on_sale title_shop">NEW</span>
+                    </div>
+
+                </div>
+                <div class="price-bg">
+                    <ul>
+                        <li class="whyt"><a href="#">illimited Theme Resume </a></li>
+                        <li><a href="#">PortFolio</a></li>
+                        <li class="whyt"><a href="#">Multilangage </a></li>
+                        <li><a href="#">Custum domaine </a></li>
+                        <li class="whyt"><a href="#">Advanced Analis</a></li>
+                    </ul>
+                    <div class="cart3">
+                        <a class="popup-with-zoom-anim" href="#small-dialog">Purchase</a>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"> </div>
+            <!--pop-up-grid-->
+            <div id="small-dialog" class="mfp-hide">
+                <div class="pop_up">
+                    <div class="payment-online-form-left">
+                        <form>
+                            <h4><span class="shipping"> </span>Shipping</h4>
+                            <ul>
+                                <li><input class="text-box-dark" type="text" value="Frist Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Frist Name';}"></li>
+                                <li><input class="text-box-dark" type="text" value="Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Last Name';}"></li>
+                            </ul>
+                            <ul>
+                                <li><input class="text-box-dark" type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"></li>
+                                <li><input class="text-box-dark" type="text" value="Company Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Company Name';}"></li>
+                            </ul>
+                            <ul>
+                                <li><input class="text-box-dark" type="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}"></li>
+                                <li><input class="text-box-dark" type="text" value="Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Address';}"></li>
+                                <div class="clear"> </div>
+                            </ul>
+                            <div class="clear"> </div>
+                            <ul class="payment-type">
+                                <h4><span class="payment"> </span> Payments</h4>
+                                <li><span class="col_checkbox">
+													<input id="3" class="css-checkbox1" type="checkbox">
+													<label for="3" name="demo_lbl_1" class="css-label1"> </label>
+													<a class="visa" href="#"> </a>
+													</span>
+
+                                </li>
+                                <li>
+													<span class="col_checkbox">
+														<input id="4" class="css-checkbox2" type="checkbox">
+														<label for="4" name="demo_lbl_2" class="css-label2"> </label>
+														<a class="paypal" href="#"> </a>
+													</span>
+                                </li>
+                                <div class="clear"> </div>
+                            </ul>
+                            <ul>
+                                <li><input class="text-box-dark" type="text" value="Card Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Card Number';}"></li>
+                                <li><input class="text-box-dark" type="text" value="Name on card" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name on card';}"></li>
+                                <div class="clear"> </div>
+                            </ul>
+                            <ul>
+                                <li><input class="text-box-light hasDatepicker" type="text" id="datepicker" value="Expiration Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Expiration Date';}"><em class="pay-date"> </em></li>
+                                <li><input class="text-box-dark" type="text" value="Security Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Security Code';}"></li>
+                                <div class="clear"> </div>
+                            </ul>
+                            <ul class="payment-sendbtns">
+                                <li><input type="reset" value="Cancel"></li>
+                                <li><input type="submit" value="Process order"></li>
+                            </ul>
+                            <div class="clear"> </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--pop-up-grid-->
+        </div>
+        <div class="clear"> </div>
+
+    </div>
+
+</div>
+        </div>
+
+    <footer id="contact" class="footer-distributed">
+
+        <div class="footer-left">
+
+            <h3 class="wow bounceInDown">MYSuper<span>CV</span></h3>
+
+            <p class="footer-links wow pulse">
+                <a href="#">News</a>
+                ·
+                <a href="#">Catalog</a>
+                ·
+                <a href="#">Premuim Account</a>
+                ·
+                <a href="#">About</a>
+                ·
+                <a href="#">Signin</a>
+                ·
+                <a href="#">Contact</a>
+            </p>
+
+            <p class="footer-company-name wow pulse">Dena &copy; 2016</p>
+        </div>
+
+        <div class="footer-center">
+
+            <div class="wow bounceInDown">
+                <i class="fa fa-map-marker"></i>
+                <p><span>Saada</span> El jadida, Maroc</p>
+            </div>
+
+            <div class="wow bounceInLeft">
+                <i class="fa fa-phone"></i>
+                <p>0620893353</p>
+            </div>
+
+            <div  class="wow bounceInUp">
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:support@company.com">Dena@company.com</a></p>
+            </div>
+
+        </div>
+
+        <div class="footer-right">
+
+            <p class="footer-company-about wow zoomIn" data-wow-duration="2s">
+                <span class="wow zoomIn" >About the company</span>
+                L'entreprise a été créee en Janvier 2015 après 2 ans d’incubation dans l’incubateur technologique MAROBTIKKAR. Dont l'objectif de l’industrialisation des résultats de propriété intellectuelle qui ont abouti suite a des recherches scientifiques.
+                - La réalisation des prototypes ont été financé par le centre national de recherche scientifique et technique.
+            </p>
+
+            <div class="footer-icons">
+
+                <a class="wow rubberBand" data-wow-delay="1s" data-wow-offset="30" href="#"><i class="fa fa-facebook"></i></a>
+                <a class="wow shake" data-wow-delay="1.5s" data-wow-offset="30" href="#"><i class="fa fa-twitter"></i></a>
+                <a class="wow flash" data-wow-delay="2s" data-wow-offset="30" href="#"><i class="fa fa-linkedin"></i></a>
+                <a class="wow tada" data-wow-delay="2s" data-wow-offset="30" data-duration="8s" href="#"><i class="fa fa-github"></i></a>
+
+            </div>
+
+        </div>
+
+    </footer>
+    </span>
+    <div ng-hide="boxSignIn" class="box-signIn">
+    <div  class="m-b-lg" >
+
+        <span ng-click="close('box-signIn')"><a  title="Close" class="closeBox" >X</a></span>
+        <div class="wrapper text-center">
+            <strong>Sign in to get in touch</strong>
+        </div>
+        <form name="form" class="form-validation">
+            <div class="text-danger wrapper text-center" ng-show="authError">
+                {{authError}}
+            </div>
+            <div class="list-group list-group-sm">
+                <div class="list-group-item">
+                    <input type="text" placeholder="Email or Username" class="form-control no-border" ng-model="user.email" required>
+                </div>
+                <div class="list-group-item">
+                    <input type="password" placeholder="Password" class="form-control no-border" ng-model="user.password" required>
+                </div>
+            </div>
+            <div class="hero-unit" ng-controller="linkedinCtrl">
+                <div id="linkedinlogin">
+                    <script type="in/Login" > </script>
+                </div>
+                <div>
+
+                    <button type="submit" style="background-color: #7266ba;border-color: #7266ba;" class="btn btn-lg btn-primary btn-block" ng-click="login()" ng-disabled='form.$invalid'>Log in</button>
+                    <div class="text-center m-t m-b"><a ui-sref="access.forgotpwd">Forgot password?</a></div>
+                    <div class="line line-dashed"></div>
+                    <p class="text-center"><small>Do not have an account?</small></p>
+                    <a ui-sref="access.signup" class="btn btn-lg btn-default btn-block">Create an account</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+    <div ng-hide="boxSignUp" class="box-signUp">
+        <div  class="m-b-lg" >
+
+    <form name="my_form"
+          class="main-form container"
+          ng-cloak class="ng-cloak"
+          novalidate>
+        <span ng-click="close('box-signUp')"><a  title="Close" class="closeBox" >X</a></span>
+
+        <h1>Sign up</h1>
+
+        <div class="control-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <input class="form-control"
+                           type="text"
+                           name="first_name"
+                           id="input_first_name"
+                           ng-model="data.first_name"
+                           ng-model-options="{ updateOn: 'blur' }"
+                           ng-keyup="cancel($event)"
+                           required
+                           placeholder="First" />
+                    <div class="error-messages" ng-if="interacted(my_form.first_name)" ng-messages="my_form.first_name.$error" ng-messages-include="form-messages">
+                        <!-- remove the next line to use the default 'Cannot be blank' message defined  in script above -->
+                        <div ng-message="required">First name is required</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control"
+                           type="text"
+                           name="last_name"
+                           id="input_last_name"
+                           ng-model="data.last_name"
+                           ng-model-options="{ updateOn: 'blur' }"
+                           ng-keyup="cancel($event)"
+                           required
+                           placeholder="Last"/>
+                    <div class="error-messages" ng-if="interacted(my_form.last_name)" ng-messages="my_form.last_name.$error" ng-messages-include="form-messages">
+                        <div ng-message="required">Last name is required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <input class="form-control"
+                   type="text"
+                   name="username"
+                   id="input_username"
+                   ng-model="data.username"
+                   ng-minlength="6"
+                   ng-minlength="12"
+                   fake-remote-record-validator="fakeUsernames"
+                   ng-model-options="{ updateOn: 'blur' }"
+                   ng-keyup="cancel($event)"
+                   required
+                   placeholder="Username"
+                   ng-pattern="/^[a-zA-Z0-9-.]*$/"/>
+            <div class="error-messages" ng-if="interacted(my_form.username)" ng-messages="my_form.username.$error" ng-messages-include="form-messages">
+                <div ng-message="required">Username is required</div>
+                <div ng-message="pattern">Dont use a Regular Expressions in your UserName</div>
+                <div ng-message="record-loading">Checking availability  <i class="fa fa-spinner fa-spin"></i></div>
+                <div ng-message="record-taken">{{ $parent.data.username }} already exists</div>
+
+            </div>
+        </div>
+
+        <div class="control-group">
+            <input class="form-control"
+                   type="email"
+                   name="email_address"
+                   id="input_email_address"
+                   ng-model="data.email_address"
+                   fake-remote-record-validator="fakeEmails"
+                   ng-model-options="{ updateOn: 'blur' }"
+                   ng-keyup="cancel($event)"
+                   required
+                   placeholder="Email" />
+            <div class="error-messages" ng-if="interacted(my_form.email_address)" ng-messages="my_form.email_address.$error" ng-messages-include="form-messages">
+                <div ng-message="required">Email is required</div>
+                <div ng-message="record-loading">checking database  <i class="fa fa-spinner fa-spin"></i></div>
+                <div ng-message="record-taken">{{ $parent.data.email_address }} already exists</div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <input class="form-control"
+                   type="password"
+                   name="password"
+                   id="input_password"
+                   ng-model="data.password"
+                   ng-minlength="6"
+                   ng-maxlength="20"
+                   ng-model-options="{ updateOn: 'blur' }"
+                   ng-keyup="cancel($event)"
+                   required
+                   placeholder="Password" />
+            <div class="error-messages"
+                 ng-if="interacted(my_form.password)"
+                 ng-messages="my_form.password.$error"
+                 ng-messages-include="form-messages"></div>
+        </div>
+
+        <div class="control-group">
+            <input class="form-control"
+                   type="password"
+                   name="password_confirm"
+                   id="input_password_confirm"
+                   ng-model="data.password_confirm"
+                   ng-minlength="6"
+                   ng-maxlength="12"
+                   ng-model-options="{ updateOn: 'blur' }"
+                   ng-keyup="cancel($event)"
+                   match-validator="data.password"
+                   required
+                   placeholder="Confirm password"/>
+            <div class="error-messages" ng-if="interacted(my_form.password_confirm)" ng-messages="my_form.password_confirm.$error" ng-messages-include="form-messages">
+                <div ng-message="match">This password does not match the password entered before</div>
+            </div>
+        </div>
+        <div>
+            <select class="form-control" ng-model="data.sexe" name="sex"required ng-change="sexe()">
+                <option  value="">votre sexe</option>
+                <option ng-value=true >Homme</option>
+                <option ng-value=false selected>Femme</option>
+            </select>
+            <div class="error-messages" ng-if=affiche ng-messages="my_form.sex.$error" ng-messages-include="form-messages">
+                <div ng-message="required">veuillez saisir votre sex</div>
+            </div>
+        </div>
+        <label class="pure-checkbox">
+            <input name="conditions" ng-model="conditions" type="checkbox">
+            I've read the terms and conditions
+        </label>
+
+
+        <button type="submit" class="btn btn-lg btn-primary btn-block   "  style="margin-bottom: 10px;background-color: #7266ba ;color: white " ng-click="signup()" ng-disabled="my_form.$invalid || !conditions" >Submit</button>
+
+        <div ng-controller="facebookCtrl">
+            <a class="btn btn-lg btn-primary btn-block" style="margin-bottom: 5px;background-color: #3b5998;color: white" ng-click="FBLogin() ">Facebook Login</a>
+
+        </div>
+        <p class="text-center"><small>Already have an account?</small></p>
+        <a ui-sref="access.signin" class="btn btn-lg btn-default btn-block" >Sign in</a>
+
+
+
+
+    </form>
+
+            </div>
+    </div>
+
+
+</div>

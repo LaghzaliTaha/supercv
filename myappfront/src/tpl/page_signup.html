@@ -1,0 +1,230 @@
+<script type="text/ng-template" id="form-messages">
+    <div ng-message="required">Cannot be blank</div>
+    <div ng-message="minlength">Too short</div>
+    <div ng-message="maxlength">Too long</div>
+    <div ng-message="email">Invalid email</div>
+    <div ng-message="pattern">You did not enter the value in the correct format</div>
+    <div ng-message="password-characters">
+        Your password must consist of alphabetical or numeric characters.
+        It must also contain at least one special character, a number as well as an uppercase letter.
+    </div>
+</script>
+
+<style>
+
+    h1 {
+        margin: 0 0 10px;
+        color: #584f47;
+        font: bold 26px "Helvetica Neue", "Helvetica", "Arial", "Sans-serif";
+        width: 100%;
+        float: left;
+        text-align: center;
+    }
+    .main-form {
+        position:relative;
+        left:0;
+        top:0;
+        width: 400px;
+        background:white;
+        padding:20px;
+        min-height:100%;
+        border-radius: 10px 0px 10px 0px;
+    }
+    .control-group {
+        margin-bottom:20px;
+    }
+    :required {
+        background: #fff url('img/required.png') no-repeat 100% 0;
+    }
+   input.ng-dirty.ng-valid{
+        border: 1px solid #55B05A !important;
+        background: url('img/valid.png') no-repeat 100% 0;
+    }
+    select.ng-dirty.ng-valid{
+        border: 1px solid #55B05A !important;
+        background: url('img/valid.png') no-repeat 100% 0;
+        background-position:  98% 50%;
+    }
+
+    input.ng-dirty.ng-invalid{
+        border: 1px solid red !important;
+        background: url('img/invalid.png') no-repeat 100% 0;
+        background-position:  99% 50%;
+
+
+    }
+    .error-messages.ng-active {
+        background:maroon;
+        color:white;
+        padding:5px;
+        border-radius:5px;
+        margin-top:15px;
+        position:relative;
+    }
+    .error-messages.ng-active:after {
+        position:absolute;
+        top:-10px;
+        content:"";
+        left:20px;
+        border-style:solid;
+        border-color:transparent transparent maroon;
+        border-width:5px;
+    }
+    [ng\:cloak], [ng-cloak], .ng-cloak {
+        display: none !important;
+    }
+</style>
+<div class="container w-xxl w-auto-xs"  ng-controller="SignupFormController" >
+
+    <form name="my_form"
+          class="main-form container"
+          ng-cloak class="ng-cloak"
+          novalidate>
+
+        <h1>Sign up</h1>
+
+        <div class="control-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <input class="form-control"
+                           type="text"
+                           name="first_name"
+                           id="input_first_name"
+                           ng-model="data.first_name"
+                           ng-model-options="{ updateOn: 'blur' }"
+                           ng-keyup="cancel($event)"
+                           required
+                           placeholder="First" />
+                    <div class="error-messages" ng-if="interacted(my_form.first_name)" ng-messages="my_form.first_name.$error" ng-messages-include="form-messages">
+                        <!-- remove the next line to use the default 'Cannot be blank' message defined  in script above -->
+                        <div ng-message="required">First name is required</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control"
+                           type="text"
+                           name="last_name"
+                           id="input_last_name"
+                           ng-model="data.last_name"
+                           ng-model-options="{ updateOn: 'blur' }"
+                           ng-keyup="cancel($event)"
+                           required
+                           placeholder="Last"/>
+                    <div class="error-messages" ng-if="interacted(my_form.last_name)" ng-messages="my_form.last_name.$error" ng-messages-include="form-messages">
+                        <div ng-message="required">Last name is required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <input class="form-control"
+                   type="text"
+                   name="username"
+                   id="input_username"
+                   ng-model="data.username"
+                   ng-minlength="6"
+                   ng-minlength="12"
+                   fake-remote-record-validator="fakeUsernames"
+                   ng-model-options="{ updateOn: 'blur' }"
+                   ng-keyup="cancel($event)"
+                   required
+                   placeholder="Username"
+                   ng-pattern="/^[a-zA-Z0-9-.]*$/"/>
+            <div class="error-messages" ng-if="interacted(my_form.username)" ng-messages="my_form.username.$error" ng-messages-include="form-messages">
+                <div ng-message="required">Username is required</div>
+                <div ng-message="pattern">Dont use a Regular Expressions in your UserName</div>
+                <div ng-message="record-loading">Checking availability  <i class="fa fa-spinner fa-spin"></i></div>
+                <div ng-message="record-taken">{{ $parent.data.username }} already exists</div>
+
+            </div>
+        </div>
+
+        <div class="control-group">
+            <input class="form-control"
+                   type="email"
+                   name="email_address"
+                   id="input_email_address"
+                   ng-model="data.email_address"
+                   fake-remote-record-validator="fakeEmails"
+                   ng-model-options="{ updateOn: 'blur' }"
+                   ng-keyup="cancel($event)"
+                   required
+                   placeholder="Email" />
+            <div class="error-messages" ng-if="interacted(my_form.email_address)" ng-messages="my_form.email_address.$error" ng-messages-include="form-messages">
+                <div ng-message="required">Email is required</div>
+                <div ng-message="record-loading">checking database  <i class="fa fa-spinner fa-spin"></i></div>
+                <div ng-message="record-taken">{{ $parent.data.email_address }} already exists</div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <input class="form-control"
+                   type="password"
+                   name="password"
+                   id="input_password"
+                   ng-model="data.password"
+                   ng-minlength="6"
+                   ng-maxlength="20"
+                   ng-model-options="{ updateOn: 'blur' }"
+                   ng-keyup="cancel($event)"
+                   password-characters-validator
+                   required
+                   placeholder="Password" />
+            <div class="error-messages"
+                 ng-if="interacted(my_form.password)"
+                 ng-messages="my_form.password.$error"
+                 ng-messages-include="form-messages"></div>
+        </div>
+
+        <div class="control-group">
+            <input class="form-control"
+                   type="password"
+                   name="password_confirm"
+                   id="input_password_confirm"
+                   ng-model="data.password_confirm"
+                   ng-minlength="6"
+                   ng-maxlength="12"
+                   ng-model-options="{ updateOn: 'blur' }"
+                   ng-keyup="cancel($event)"
+                   password-characters-validator
+                   match-validator="data.password"
+                   required
+                   placeholder="Confirm password"/>
+            <div class="error-messages" ng-if="interacted(my_form.password_confirm)" ng-messages="my_form.password_confirm.$error" ng-messages-include="form-messages">
+                <div ng-message="match">This password does not match the password entered before</div>
+            </div>
+        </div>
+        <div>
+        <select class="form-control" ng-model="data.sexe" name="sex"required ng-change="sexe()">
+            <option  value="">votre sexe</option>
+            <option ng-value=true >Homme</option>
+            <option ng-value=false selected>Femme</option>
+        </select>
+            <div class="error-messages" ng-if=affiche ng-messages="my_form.sex.$error" ng-messages-include="form-messages">
+                <div ng-message="required">veuillez saisir votre sex</div>
+            </div>
+        </div>
+        <label class="pure-checkbox">
+            <input name="conditions" ng-model="conditions" type="checkbox">
+            I've read the terms and conditions
+        </label>
+
+
+            <button type="submit" class="btn btn-lg btn-primary btn-block   "  style="margin-bottom: 10px;background-color: #7266ba ;color: white " ng-click="signup()" ng-disabled="my_form.$invalid || !conditions" >Submit</button>
+
+        <div ng-controller="facebookCtrl">
+            <a class="btn btn-lg btn-primary btn-block" style="margin-bottom: 5px;background-color: #3b5998;color: white" ng-click="FBLogin() ">Facebook Login</a>
+
+        </div>
+        <p class="text-center"><small>Already have an account?</small></p>
+        <a ui-sref="access.signin" class="btn btn-lg btn-default btn-block" >Sign in</a>
+
+
+
+
+    </form>
+
+</div>
+
+</div>

@@ -1,0 +1,53 @@
+<!-- list -->
+<ul class="nav">
+
+  <li>
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+      <span class="font-bold" >Themes CV</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span >Theme 1</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.dashboard-v1">
+          <span>Theme 2</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.dashboard-v2">
+          <b class="label bg-info pull-right">N</b>
+          <span>Theme 2</span>
+        </a>
+      </li>
+
+    </ul>
+      <li>
+      <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+      <span class="font-bold" >Mes Cv's</span>
+    </a>
+    
+  </li>
+  </li>
+</li>
+</ul>
+
+  
+ 
+  
+ 
+     
+  
+<!-- / list -->

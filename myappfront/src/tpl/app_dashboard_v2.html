@@ -1,0 +1,154 @@
+
+<div id="cv1" ng-controller="themeController">
+    <head>
+        <link id="theme-style" rel="stylesheet" ng-href="css/theme_2/{{theme}}">
+
+
+
+    </head>
+    <div class="color-picker ">
+        <div class="selected-color"  style="background-color: {{vm.color}}" ></div>
+        <div class="color-palette">
+            <div ng-repeat="option in vm.options"
+                 style="background-color: {{option}}"
+                 ng-class="{'palette-selected-color': option == vm.color, 'transparent-color': option == 'transparent'}"
+                 ng-click="changeColor(option)"
+            ></div>
+        </div>
+    </div>
+
+<div class="container">
+    <div class="wrapperCv1 row ">
+        <div class=" main-wrapper col-md-9 col-xs-12 ">
+
+            <section class="section summary-section">
+                <h2 class="section-title"><i class="fa fa-user"></i>Career Profile</h2>
+                <div class="summary">
+                    <p>{{info}}</p>
+                </div><!--//summary-->
+            </section><!--//section-->
+
+            <section class="section experiences-section">
+                <h2 class="section-title"><i class="fa fa-briefcase"></i>Experiences</h2>
+
+                <div class="item"ng-repeat="ExperienceSet in experienceSets">
+                    <div class="meta">
+                        <div class="row">
+                            <div class="col-md-8 col-xs-12"><h3 class="job-title ">{{ExperienceSet.poste}}</h3>
+                                <div class="company">{{ExperienceSet.entreprise}}, {{ExperienceSet.ville}}-{{ExperienceSet.pays}} , {{ExperienceSet.dateDebut | date:'yyyy'}}/{{ExperienceSet.dateFin| date:'yyyy'}}</div>
+                            </div>
+                            <a href="" class=" col-md-3 col-xs-12"><img class="exp-logo pull-right" src={{ExperienceSet.logo}}></a>
+                        </div><!--//upper-row-->
+                    </div><!--//meta-->
+                    <div class="details" ng-repeat="tache in ExperienceSet.mission">
+                        <p>{{tache}}</p>
+                    </div><!--//details-->
+                </div><!--//item-->
+
+
+
+            </section><!--//section-->
+
+
+            <section class="skills-section section">
+                <h2 class="section-title"><i class="fa fa-rocket"></i>Skills &amp; Proficiency</h2>
+                <div class="skillset">
+                    <div class="item" ng-repeat="competenceSet in competenceSets " style="margin-bottom: 0px;">
+                        <div ng-repeat="competenceItem in competenceSet.itemCompetences">
+                            <div ng-if="competenceItem.vecImg==false">
+                        <h3 class="level-title">{{competenceItem.titreItemCompetence}}</h3>
+                       <!--//level-bar-->
+                            <div class="progress progress-striped level-bar">
+                                <div class="progress-bar progress-bar-info level-bar-inner" style="width: {{competenceItem.levelItemCompetence*10}}%">
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                    </div><!--//item-->
+
+
+
+
+
+
+                </div>
+            </section><!--//skills-section-->
+
+        </div><!--//main-body-->
+
+        <div class="sidebar-wrapper col-md-3 col-xs-12    ">
+            <div class="profile-container">
+                <img class="profile" src={{photoProfil}} alt="" />
+                <h2 class="name">{{name}}</h2>
+                <h3 class="tagline">{{speciality}}</h3>
+                <h6>{{old}}</h6>
+                <h6>{{adress}}</h6>
+
+            </div><!--//profile-container-->
+
+            <div class="contact-container container-block">
+                <ul class="list-unstyled contact-list">
+                    <span  ng-repeat="lienSet in lienSets">
+                    <li ng-if="lienSet.contact!=null">
+                        <i class="fa {{lienSet.logo}}"></i><a href={{lienSet.url}}>{{lienSet.contact}}</a>
+                    </li>
+                    </span>
+                </ul>
+                <div class="">
+                            <span ng-repeat="lienSet in lienSets">
+								<a ng-if="lienSet.contact==null" href={{lienSet.url}}>
+                                    <i class="fa {{lienSet.logo}}"></i></a>
+								</span>
+                </div>
+
+            </div><!--//contact-container-->
+            <div class="education-container container-block">
+                <h2 class="container-block-title">Formation</h2>
+                <div class="item" ng-repeat="formationSet in formationSets">
+                    <h4 class="degree">{{formationSet.nomFormation}}</h4>
+                    <h5 class="meta"> {{formationSet.etablissement}}</h5>
+                    <div class="time">{{formationSet.dateDebut | date:'yyyy'}}/{{formationSet.dateFin | date:'yyyy'}}</div>
+                    <ul class="mylist">
+                        <li  ng-repeat="speciality in formationSet.specialities"> {{speciality}}</li>
+                    </ul>
+                </div><!--//item-->
+
+            </div><!--//education-container-->
+            <div class="languages-container container-block">
+                <h2 class="container-block-title">Languages</h2>
+                <span ng-repeat="competenceSet in competenceSets">
+                <ul ng-if="competenceSet.domaineCompetence=='Languages'" class="list-unstyled interests-list" >
+                    <li ng-repeat="item in competenceSet.itemCompetences">{{item.titreItemCompetence}}
+
+                    </li>
+                </ul>
+                </span>
+            </div><!--//interests-->
+
+            <div class="interests-container container-block">
+                <h2 class="container-block-title">Skills</h2>
+                <ul class="list-unstyled interests-list" ng-repeat="SkillSet in SkillSets">
+                    <li>{{SkillSet.typeLoisr}}</li>
+                    <ul class="mylist">
+                        <li  ng-repeat="detaille in SkillSet.detailles"> {{detaille}}</li>
+                    </ul>
+
+                </ul>
+            </div><!--//interests-->
+
+        </div><!--//sidebar-wrapper-->
+
+
+
+    </div>
+
+
+</div>
+
+</div>
+
+<a class="btn btn-danger" href="#">
+    <i class="fa fa-trash-o fa-lg"></i> Delete</a>
+
+
+

@@ -1,0 +1,64 @@
+<!-- list -->
+<ul class="nav"  ng-controller="navController">
+  <li>
+    <a href class="auto"  ui-sref='app.resume'>
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-home icon text-primary-dker"></i>
+      <span class="font-bold"> Home</span>
+    </a>
+
+  </li>
+
+  <li>
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-duplicate icon text-primary-dker"></i>
+      <span class="font-bold"> CV</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span >Mes CVs</span>
+        </a>
+      </li>
+      <li ui-sref-active="active"  ng-repeat="(key, value) in cvs track by $index" >
+        <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+          <i class="glyphicon glyphicon-list-alt icon text-primary-dker"></i>
+          <span class="font-bold"> CV {{$index+1}}</span>
+        </a>
+        <ul class="nav nav-sub dk">
+          <li ui-sref-active="active"  ng-repeat=" n in value " style="text-align: center">
+            <a href class="auto"   ng-click="theme(key)" >
+              <span class="font-bold" > {{n.nomType}}</span>
+            </a>
+          </li>
+
+
+        </ul>
+
+      </li>
+
+
+    </ul>
+
+  </li>
+
+</ul>
+
+  
+ 
+  
+ 
+     
+  
+<!-- / list -->

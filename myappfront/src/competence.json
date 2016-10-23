@@ -1,0 +1,7 @@
+[
+  { "val": "fa icon-html" , "text": "HTML" },
+  { "val": "fa icon-css" , "text": "CSS" },
+  { "val": "fa icon-javascript fa-lg-fix" , "text": "JS" },
+  { "val": "fa icon-mssql fa-lg-fix" , "text": "MS SQL" },
+  { "val": "fa icon-oracle fa-lg-fix" , "text": "Oracle" }
+]

@@ -1,0 +1,37 @@
+<div class="container w-xxl w-auto-xs" ng-controller="resetpwd" >
+    <a href class="navbar-brand block m-t">welcome</a>
+    <div class="m-b-lg" >
+        <div class="wrapper text-center">
+            <strong>veulliez entrez votre nouveau mot de passe</strong>
+        </div>
+        <div class="text-danger wrapper text-center" ng-show="authError">
+            {{authError}}
+        </div>
+        <form name="form" class="form-validation" ng-show=show>
+
+            <div class="list-group list-group-sm">
+                <div class="list-group-item">
+                    <input type="password" placeholder="nouveau mot de passe" class="form-control no-border" ng-model="pwd1" required>
+                </div>
+                <div class="list-group-item">
+                    <input type="password" placeholder="retaper le nouveau mot de passe" class="form-control no-border" ng-model="pwd2" required>
+                </div>
+
+            </div>
+            <div class="hero-unit" >
+
+                <div>
+
+                    <button type="submit"  class="btn btn-lg btn-primary btn-block" ng-click="resetPwd()" >Reset</button>
+                    </div>
+                </div>
+
+        </form>
+
+        </div>
+    </div>
+    <div  class="text-center" ng-include="'tpl/blocks/page_footer.html'">
+        {% include 'blocks/page_footer.html' %}
+    </div>
+</div>
+

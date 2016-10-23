@@ -1,0 +1,229 @@
+<!-- settings -->
+
+  <button class="btn btn-default no-shadow pos-abt" ui-toggle-class="active" target=".settings">
+    <i class="fa fa-spin fa-gear"></i>
+  </button>
+  <div  class="panel-heading" style="background: #f6f8f8;color: black;border: 1px solid #dbdbdb">
+    Settings
+  </div>
+  <div class="panel-body">
+    <div class="m-b-sm">
+      <label class="i-switch bg-info pull-right">
+        <input type="checkbox" ng-model="app.settings.stylePhoto">
+        <i></i>
+      </label>
+      Style Photo
+    </div>
+    <div class="m-b-sm">
+      <label class="i-switch bg-info pull-right">
+        <input type="checkbox" ng-model="app.settings.styleCV">
+        <i></i>
+      </label>
+      Style CV
+    </div>
+    <hr class="ligne-1" style="margin-bottom: 10px">
+    <div>
+      <label class=" pull-right">
+        <label ng-controller="themeController">
+
+          <span style="margin-left: 40px;">Font Family</span>
+          <select class="form-control bfh-fonts" data-font="Arial" id="fontselect" style="margin-top: 10px"></select>
+
+</label>
+        </label>
+    </div>
+
+  </div>
+  <div class="wrapper b-t b-light bg-light lter r-b">
+    <div class="row " style="display: table">
+      <div style="display: table-column" class="col-xs-6">
+        <label class="i-checks block m-b " ng-click="
+          app.themeCV.leftbar='blueTheme';
+          app.themeCV.titleBloc='blueTheme';
+          app.themeCV.titleItem='lightBleuTheme';
+         ;
+         ">
+          <input type="radio" name="a" ng-model="app.settings.themeID" value="1">
+          <span class="block bg-light clearfix pos-rlt">
+            <span class="active pos-abt w-full h-full bg-black-opacity text-center">
+              <i class="glyphicon glyphicon-ok text-white m-t-xs"></i>
+            </span>
+            <b class=" header" style="height: 30px;background-color: #219ed5"></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 3px ;border-radius: 1px;height: 8px;background-color: #219ed5" ></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 6px;width: 30%;height: 5px;background-color: #eaf8fd;" ></b>
+
+          </span>
+        </label>
+
+        <label class="i-checks block m-b" ng-click="
+          app.themeCV.leftbar='greenTheme';
+          app.themeCV.titleBloc='greenTheme';
+          app.themeCV.titleItem='lightGreenTheme';
+         ;
+         ">
+          <input type="radio" name="b" ng-model="app.settings.themeID" value="2">
+          <span class="block bg-light clearfix pos-rlt">
+            <span class="active pos-abt w-full h-full bg-black-opacity text-center">
+              <i class="glyphicon glyphicon-ok text-white m-t-xs"></i>
+            </span>
+            <b class=" header" style="height: 30px;background-color:  #003634"></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 3px ;border-radius: 1px;height: 8px;background-color:  #003634" ></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 6px;width: 30%;height: 5px;background-color: #428381;" ></b>
+
+          </span>
+        </label>
+
+        <label class="i-checks block m-b" ng-click="
+          app.themeCV.leftbar='turkoiTheme';
+          app.themeCV.titleBloc='turkoiTheme';
+          app.themeCV.titleItem='lightTurkoiTheme';
+         ;
+         ">
+          <input type="radio" name="c" ng-model="app.settings.themeID" value="3" >
+          <span class="block bg-light clearfix pos-rlt">
+            <span class="active pos-abt w-full h-full bg-black-opacity text-center">
+              <i class="glyphicon glyphicon-ok text-white m-t-xs"></i>
+            </span>
+            <b class=" header" style="height: 30px;background-color: #c3d79c"></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 3px ;border-radius: 1px;height: 8px;background-color: #c3d79c;" ></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 6px;width: 30%;height: 5px;background-color: #eaf2dd;" ></b>
+
+          </span>
+        </label>
+
+        <label class="i-checks block m-b" ng-click="
+          app.themeCV.leftbar='roseTheme';
+          app.themeCV.titleBloc='roseTheme';
+          app.themeCV.titleItem='lightRoseTheme';
+         ;
+         ">
+          <input type="radio" name="d" ng-model="app.settings.themeID" value="4">
+          <span class="block bg-light clearfix pos-rlt">
+            <span class="active pos-abt w-full h-full bg-black-opacity text-center">
+              <i class="glyphicon glyphicon-ok text-white m-t-xs"></i>
+            </span>
+            <b class=" header" style="height: 30px;background-color:#d51b6d"></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 3px ;border-radius: 1px;height: 8px;background-color: #d51b6d" ></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 6px;width: 30%;height: 5px;background-color: #fdebf4;" ></b>
+
+          </span>
+        </label>
+
+        <label class="i-checks block m-b" ng-click="
+          app.themeCV.leftbar='redTheme';
+          app.themeCV.titleBloc='redTheme';
+          app.themeCV.titleItem='lightRedTheme';
+         ;
+         ">
+          <input type="radio" name="e" ng-model="app.settings.themeID" value="5">
+          <span class="block bg-light clearfix pos-rlt">
+            <span class="active pos-abt w-full h-full bg-black-opacity text-center">
+              <i class="glyphicon glyphicon-ok text-white m-t-xs"></i>
+            </span>
+            <b class=" header" style="height: 30px;background-color: #bd2112"></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 3px ;border-radius: 1px;height: 8px;background-color: #bd2112" ></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 6px;width: 30%;height: 5px;background-color: #fec9c0;" ></b>
+
+          </span>
+        </label>
+
+
+
+      </div>
+      <div style="display: table-column" class="col-xs-6">
+        <label class="i-checks block m-b" ng-click="
+          app.themeCV.leftbar='wolaTheme';
+          app.themeCV.titleBloc='wolaTheme';
+          app.themeCV.titleItem='lightWolaTheme';
+         ;
+         ">
+          <input type="radio" name="f" ng-model="app.settings.themeID" value="6">
+          <span class="block bg-light clearfix pos-rlt">
+            <span class="active pos-abt w-full h-full bg-black-opacity text-center">
+              <i class="glyphicon glyphicon-ok text-white m-t-xs"></i>
+            </span>
+            <b class=" header" style="height: 30px;background-color: #1ebeab;"></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 3px ;border-radius: 1px;height: 8px;background-color: #1ebeab;" ></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 6px;width: 30%;height: 5px;background-color: #c1fff8" ></b>
+
+          </span>
+        </label>
+        <label class="i-checks block m-b" ng-click="
+          app.themeCV.leftbar='camaTheme';
+          app.themeCV.titleBloc='camaTheme';
+          app.themeCV.titleItem='lightCamaTheme';
+         ;
+         ">
+          <input type="radio" name="g" ng-model="app.settings.themeID" value="7" >
+          <span class="block bg-light clearfix pos-rlt">
+            <span class="active pos-abt w-full h-full bg-black-opacity text-center">
+              <i class="glyphicon glyphicon-ok text-white m-t-xs"></i>
+            </span>
+            <b class=" header" style="height: 30px;background-color: #9a1cc5"></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 3px ;border-radius: 1px;height: 8px;background-color: #9a1cc5" ></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 6px;width: 30%;height: 5px;background-color:#f2c9fe;" ></b>
+
+          </span>
+        </label>
+
+        <label class="i-checks block m-b" ng-click="
+          app.themeCV.leftbar='samaTheme';
+          app.themeCV.titleBloc='samaTheme';
+          app.themeCV.titleItem='lightSamaTheme';
+         ;
+         ">
+          <input type="radio" name="h" ng-model="app.settings.themeID" value="8" >
+          <span class="block bg-light clearfix pos-rlt">
+            <span class="active pos-abt w-full h-full bg-black-opacity text-center">
+              <i class="glyphicon glyphicon-ok text-white m-t-xs"></i>
+            </span>
+            <b class=" header" style="height: 30px;background-color: #27a71b"></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 3px ;border-radius: 1px;height: 8px;background-color: #27a71b" ></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 6px;width: 30%;height: 5px;background-color:#b9feac;" ></b>
+
+          </span>
+        </label>
+        <label class="i-checks block m-b" ng-click="
+          app.themeCV.leftbar='soumaTheme';
+          app.themeCV.titleBloc='soumaTheme';
+          app.themeCV.titleItem='lightSoumaTheme';
+         ;
+         ">
+          <input type="radio" name="i" ng-model="app.settings.themeID" value="9">
+          <span class="block bg-light clearfix pos-rlt">
+            <span class="active pos-abt w-full h-full bg-black-opacity text-center">
+              <i class="glyphicon glyphicon-ok text-white m-t-xs"></i>
+            </span>
+            <b class=" header" style="height: 30px;background-color:  #fd8424"></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 3px ;border-radius: 1px;height: 8px;background-color:  #fd8424" ></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 6px;width: 30%;height: 5px;background-color: #fccb9b;" ></b>
+
+          </span>
+        </label>
+
+        <label class="i-checks block m-b" ng-click="
+          app.themeCV.leftbar='rolaTheme';
+          app.themeCV.titleBloc='rolaTheme';
+          app.themeCV.titleItem='lightRolaTheme';
+         ;
+         ">
+          <input type="radio" name="j" ng-model="app.settings.themeID" value="10">
+          <span class="block bg-light clearfix pos-rlt">
+            <span class="active pos-abt w-full h-full bg-black-opacity text-center">
+              <i class="glyphicon glyphicon-ok text-white m-t-xs"></i>
+            </span>
+            <b class=" header" style="height: 30px;background-color: #808080"></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 3px ;border-radius: 1px;height: 8px;background-color: #808080" ></b>
+            <b class=" header" style="margin-top: 3px;margin-left: 6px;width: 30%;height: 5px;background-color: #e2e2e2;" ></b>
+
+          </span>
+        </label>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+<!-- /settings -->

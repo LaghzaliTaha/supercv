@@ -1,0 +1,330 @@
+<link rel="stylesheet" href="css/theme1.css" type="text/css">
+
+
+<div id="cv0" ng-controller="themeController">
+    <div class="wrapperCv0 row  ">
+    <div class="col-md-4   left-bar   {{app.themeCV.leftbar}} ">
+       <!-----------------------------------image profil cv (Drag and drop) ------------------------------------------------------------------>
+        <div >
+            <div >
+                <div id="photo_container">
+                    <img ng-class="whatClassIsIt(app.settings.stylePhoto)" ng-src={{infoCV.photo}} ng-click="show_popup('popup_upload')" ng-mouseover="afficheButtonModifPhoto()" ng-mouseleave="cacherButtonModifPhoto()">
+                </div>
+            </div><!-- content -->
+
+        </div><!-- container -->
+
+        <!-- The popup for upload new photo -->
+        <div id="popup_upload">
+            <div class="form_upload">
+                <span class="close" ng-click="close_popup('popup_upload')">x</span>
+                <h2>Upload photo</h2>
+                <form  enctype="multipart/form-data" target="upload_frame" >
+                    <input type="file" name="photo" id="photo" class="file_input">
+                    <div id="loading_progress"></div>
+                    <input type="submit" value="Upload photo" id="upload_btn" ng-click="submit_photo()">
+                </form>
+                <iframe name="upload_frame" class="upload_frame"></iframe>
+            </div>
+        </div>
+
+        <!-- The popup for crop the uploaded photo -->
+        <div id="popup_crop">
+            <div class="form_crop">
+                <span class="close" ng-click="close_popup('popup_crop')">x</span>
+                <h2>Crop photo</h2>
+                <!-- This is the image we're attaching the crop to -->
+                <img id="cropbox" />
+
+                <!-- This is the form that our event handler fills -->
+                <form>
+                    <input type="hidden" id="x" name="x" />
+                    <input type="hidden" id="y" name="y" />
+                    <input type="hidden" id="w" name="w" />
+                    <input type="hidden" id="h" name="h" />
+                    <input type="hidden" id="photo_url" name="photo_url" />
+                    <input type="button" value="Crop Image" id="crop_btn" ng-click="crop_photo()" />
+                </form>
+            </div>
+        </div>
+        <!---------------------------------------------------------------------------------------------------------------------->
+        <div class="ali">
+            <div>
+                <span class="name ng-binding">
+                <span quick-edit ng-model="infoCV.nom" class="souma" ng-change="update(infoCV,'informationCV')"  ></span>
+                <span quick-edit ng-model="infoCV.prenom" class="souma" ng-change="update(infoCV,'informationCV')" ></span>
+                </span>
+            </div>
+            <div>
+                <span style="font-style: italic"  ng-model="infoPersonnel.titreCV" quick-edit ng-change="update(infoPersonnel,'informationPersonnel')" class="title ng-binding"></span>
+            </div>
+            <div>
+                <span quick-edit ng-model="infoCV.dateNaissance" ng-change="update(infoCV,'informationCV')" class="title ng-binding"></span>
+            </div>
+            <div>
+                <span class="contacts-points ng-binding">
+                    <span quick-edit ng-model="infoCV.ville" ng-change="update(infoCV,'informationCV')"></span>
+                    <span quick-edit ng-model="infoCV.pays" ng-change="update(infoCV,'informationCV')"></span>
+                    <span quick-edit ng-model="infoCV.codePostal" ng-change="update(infoCV,'informationCV')"></span>
+</span>
+            </div>
+        </div>
+
+
+
+        <div >
+            <hr class="ligne-1">
+
+        <div  ng-mouseover="afficherOutil('contact')" ng-mouseleave="cacherOutil('contact')" id="contacts">
+
+        <div class=" ali">
+            <div style="font-family: mochary;font-size: 12px;color: white">
+                <h1 style="font-style: italic;display: inline-block">Contact</h1>
+                <button style="position:relative;left: 0; margin-left: 70px" ng-hide="affichageOutilContact" type="button" class="addLien btn btn-round btn-xs" ng-click="addElement('contacts')"><i class="fa fa-plus fa-x " style="color: #219ed5 ;margin-top: 5px;padding-top: 0px;"></i></button>
+            </div>
+            <div class="contacts">
+                <div class="contact-item" ng-repeat="lienSet in lienSets">
+                    <div id="contact" style="position: relative" ng-rvitem data={{lienSet.idLiens}}>
+
+                    <span ng-if="lienSet.contact!=null" class="contacts-address-name">
+                        <a   href={{lienSet.contact}} style="color: white"><i class="fa fa-lg {{lienSet.logo}}"></i>&nbsp;</a>
+
+                        <span quick-edit ng-model="lienSet.url" ng-change="update(lienSet,'lien')"  class="a-lien" ></span>
+                    </span>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+            </div>
+
+        <div ng-mouseover="afficherOutil('lien')" ng-mouseleave="cacherOutil('lien')" id="liens">
+        <div class="contacts-bar ali" style="margin-bottom: 30px">
+            <div style="font-family: mochary;font-size: 12px;color: white">
+                <h1 style="font-style: italic;display: inline-block">Liens</h1>
+                <button style="position:relative;left: 0; margin-left: 95px" ng-hide="affichageOutilLien" type="button" class="addLien btn btn-round btn-xs" ng-click="addElement('liens')"><i class="fa fa-plus fa-x " style="color: #219ed5 ;margin-top: 5px;padding-top: 0px;"></i></button>
+            </div>
+                            <span ng-repeat="lienSet in lienSets">
+                                <span id="lien" style="position: relative" ng-rvitem data={{lienSet.idLiens}}>
+
+								<a class="a-lien" ng-if="lienSet.contact==null" href={{lienSet.url}}>
+                                    <i class="fa {{lienSet.logo}}"></i></a>
+
+								</span>
+
+
+
+        </div>
+            </div>
+            <div>
+            <div class=" ali"  ng-mouseover="afficherOutil('langue')" ng-mouseleave="cacherOutil('langue')" id="langues" >
+                <div style="font-family: mochary;font-size: 12px;color: white">
+                    <h1 style="font-style: italic;display: inline-block">Langue</h1>
+                    <button style="position:relative;left: 0; margin-left: 75px" ng-hide="affichageOutilLangue" type="button"  class="addLien btn btn-round btn-xs" ng-click="addElement('langues')"><i class="fa fa-plus fa-x " style="color: #219ed5 ;margin-top: 5px;padding-top: 0px;"></i></button>
+                </div>
+                <div class="contacts">
+                    <div  ng-repeat="languageSet in languageSets ">
+
+                    <div class="contact-item" >
+                        <div id="language" style="position: relative" ng-rvitem data={{languageSet.idLanguage}} >
+
+                    <span  class="contacts-address-name" style="display: inline-flex">
+                       <img src={{languageSet.logo}} class="language-image" style="margin-right: 5px;margin-top: 2px">
+
+
+                      <input  class="rating-input" value={{languageSet.level}} type="number" min=0 max=5  data-size="xs" >
+                    </span>
+                        </div>
+                    </div>
+                        </div>
+
+                </div>
+            </div>
+                </div>
+        </div>
+
+
+        <hr class="ligne-1">
+        <div class="ali">
+            <p quick-edit ng-model="infoPersonnel.presentation" ng-change="update(infoPersonnel,'informationPersonnel')"></p>
+        </div>
+
+    </div>
+
+
+    <div ng-class="designeCV(app.settings.styleCV)" class="col-md-8  right-bar ">
+        <div class="bog-right">
+            <ul  class="list-group gutter list-group-lg list-group-sp">
+                <li ng-mouseover="afficherOutil('experience')" ng-mouseleave="cacherOutil('experience')">
+                    <div class="panel  ">
+
+
+                        <div class="panel-heading {{app.themeCV.titleBloc}}" >
+                            <i class="fa fa-briefcase"></i>
+                            <span class="souma">Experiences</span> <span class="groupeButtons  ">
+                                <ul ng-hide="affichageOutilExperience">
+                                    <li class="buttonAdd"><a  class="round green" ng-click="addElement('experiences')"><i class="fa fa-plus fa-2x " style="color: white ;margin-top: 10px;padding-top: 0px;"></i><span class="round">ajouter Experience</span></a></li>
+                                    <li class="buttonRemove"><a  class="round green" ng-click="saveElement('experiences')"><i class="fa fa-save fa-2x " style="color: white ;margin-top: 10px;padding-top: 0px;"></i><span class="round">Enregister Experience</span></a></li>
+
+                                </ul>
+                            </span>
+
+                        </div>
+                        <div class=" panel-body" id="experiences">
+                            <div ng-repeat="ExperienceSet in experienceSets" >
+                                <div id="experience" style="position: relative" ng-rvitem data={{ExperienceSet.idExperience}}>
+                                <span ng-model="ExperienceSet.poste" quick-edit ng-change="update(ExperienceSet,'experience')" class="title-area {{app.themeCV.titleItem}}"></span>
+                                <p class="describe">
+                                    <span ng-model="ExperienceSet.entreprise" quick-edit ng-change="update(ExperienceSet,'experience')"></span>
+                                    <i class="fa fa-circle iconList"></i><span ng-model="ExperienceSet.typeContrat" quick-edit ng-change="update(ExperienceSet,'experience')"></span>
+                                    <i class="fa fa-circle iconList"></i><span ng-model="ExperienceSet.dateDebut" quick-edit ng-change="update(ExperienceSet,'experience')"></span>/<span ng-model="ExperienceSet.dateFin" quick-edit ng-change="update(infoPersonnel,'experience')"></span>
+                                    <i class="fa fa-circle iconList"></i><span ng-model="ExperienceSet.ville" quick-edit ng-change="update(ExperienceSet,'experience')"></span>-<span ng-model="ExperienceSet.pays" quick-edit ng-change="update(infoPersonnel,'experience')"></span>
+                                </p>
+                                <a ng-if="ExperienceSet.logo!=null" href=""><img  class="exp-logo pull-right" src={{ExperienceSet.logo}}></a>
+                                <ul class="mylist">
+                                    <li ng-repeat="i in ExperienceSet.mission">
+                                        <div id="itemExperience" style="position: relative" ng-rvitem data="{{ExperienceSet.idExperience}}" item="{{i}}">
+                                            <i class="fa fa-check {{app.themeCV.titleItem}}" aria-hidden="true" style="background: white" ></i><span  ng-model="ExperienceSet.mission[$index]" quick-edit ng-change="update(ExperienceSet,'experience')"></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+                <li ng-mouseover="afficherOutil('formation')" ng-mouseleave="cacherOutil('formation')">
+                    <div class="panel ">
+
+
+                        <div class="panel-heading {{app.themeCV.titleBloc}}"><i class="fa fa-graduation-cap"></i>
+                            <span class="souma">Formation</span>    <span class="groupeButtons  ">
+                                <ul ng-hide="affichageOutilFormation">
+                                    <li class="buttonAdd"><a  class="round green" ng-click="addElement('formations')"><i class="fa fa-plus fa-2x " style="color: white ;margin-top: 10px;padding-top: 0px;"></i><span class="round">ajouter Formation</span></a></li>
+                                    <li class="buttonRemove"><a  class="round green" ng-click="saveElement('formations')"><i class="fa fa-save fa-2x " style="color: white ;margin-top: 10px;padding-top: 0px;"></i><span class="round">Enregister Formation</span></a></li>
+
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="panel-body" id="formations">
+                            <div ng-repeat="formationSet in formationSets">
+                                <div id="formation" style="position: relative" ng-rvitem data={{formationSet.idFormation}}>
+
+                                <span ng-model="formationSet.nomFormation" class="title-area {{app.themeCV.titleItem}}" quick-edit ng-change="update(formationSet,'formation')"></span>
+                                <p class="describe">
+                                    <span ng-model="formationSet.etablissement" quick-edit ng-change="update(formationSet,'formation')" ></span>
+                                    <i class="fa fa-circle iconList"></i>
+                                    <span ng-model="formationSet.dateDebut" quick-edit ng-change="update(formationSet,'formation')" ></span>
+                                    /<span ng-model="formationSet.dateFin" quick-edit ng-change="update(formationSet,'formation')" ></span>
+
+
+                                </p>
+                                <ul class="mylist">
+                                    <li ng-repeat="speciality in formationSet.specialities">
+                                        <div id="specialite" style="position: relative" ng-rvitem data="{{formationSet.idFormation}}" item="{{speciality}}">
+                                            <i class="fa fa-check {{app.themeCV.titleItem}}" aria-hidden="true" style="background: white" ></i><span ng-model="formationSet.specialities[$index]" quick-edit ng-change="update(formationSet,'formation')"></span>
+                                        </div>
+                                    </li>
+
+
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+                <li ng-mouseover="afficherOutil('competence')" ng-mouseleave="cacherOutil('competence')">
+                    <div class="panel ">
+
+
+                        <div class="panel-heading {{app.themeCV.titleBloc}}"><i class="fa fa-sliders"></i>
+                            <span class="souma">Competences</span> <span class="groupeButtons  ">
+                                <ul ng-hide="affichageOutilCompetence">
+                                    <li class="buttonAdd"><a  class="round green " ng-click="addElement('competences')"><i class="fa fa-plus fa-2x " style="color: white ;margin-top: 10px;padding-top: 0px;"></i><span class="round">ajouter Competence</span></a></li>
+                                    <li class="buttonRemove"><a  class="round green" ng-click="saveElement('competences')"><i class="fa fa-save fa-2x " style="color: white ;margin-top: 10px;padding-top: 0px;"></i><span class="round">Enregister Competence</span></a></li>
+
+
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="container-fluid" id="competences">
+
+
+                            <div class="row row-competence" ng-repeat="competenceSet in competenceSets ">
+                                <div id="competence" style="position: relative" ng-rvitem data={{competenceSet.idCompetence}}>
+
+                                <div class="col-md-3 col-xs-12 competence-area {{app.themeCV.titleItem}}">
+                                <div class="col-md-12 col-xs-12 competence-area {{app.themeCV.titleItem}}">
+                                    <span ng-model="competenceSet.domaineCompetence" quick-edit ng-change="update(competenceSet,'competence')"></span>:
+                                </div>
+                                </div>
+                                <div class="col-md-9 col-xs-12">
+                                <div class="col-md-4 col-xs-12  " style="bottom: 0px;" ng-repeat="competenceItem in competenceSet.itemCompetences" >
+                                    <div id="itemcompetence" style="position: relative" ng-rvitem data={{competenceItem.idItemCompetence}} class="competence-item ">
+									<span class="competence-name {{app.themeCV.titleItem}}">
+										<i  class={{competenceItem.logoItemCompetence}} ></i>&nbsp;{{competenceItem.titreItemCompetence}}
+									</span>
+
+                                        <div class="level">
+                                            <div class="meter"><span  class="{{app.themeCV.titleBloc}}" style="width:{{competenceItem.levelItemCompetence}}%"></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </li>
+                <li ng-mouseover="afficherOutil('skill')" ng-mouseleave="cacherOutil('skill')">
+                    <div class="panel ">
+
+
+                        <div class="panel-heading {{app.themeCV.titleBloc}}"><i class="fa fa-paper-plane"></i>
+                            <span class="souma">Skills</span> <span class="groupeButtons" >
+                                <ul ng-hide="affichageOutilSkill">
+                                    <li class="buttonAdd"><a  class="round green" ng-click="addElement('skills')"><i class="fa fa-plus fa-2x " style="color: white ;margin-top: 10px;padding-top: 0px;"></i><span class="round">ajouter Loisir</span></a></li>
+                                    <li class="buttonRemove"><a  class="round green" ng-click="saveElement('skills')"><i class="fa fa-save fa-2x " style="color: white ;margin-top: 10px;padding-top: 0px;"></i><span class="round">Enregister Loisir</span></a></li>
+
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="panel-body" id="skills">
+                            <div ng-repeat="SkillSet in SkillSets">
+                                <div id="loisir" style="position: relative" ng-rvitem data={{SkillSet.idLoisir}}>
+
+                                <span class="title-area {{app.themeCV.titleItem}}" ng-model="SkillSet.typeLoisr" quick-edit ng-change="update(SkillSet,'loisir')" ></span>
+                                <ul class="mylist">
+                                    <li ng-repeat="detaille in SkillSet.detailles">
+                                        <div id="detaille" style="position: relative" ng-rvitem data="{{SkillSet.idLoisir}}" item="{{detaille}}">
+                                            <i class="fa fa-check {{app.themeCV.titleItem}}" aria-hidden="true" style="background: white" ></i><span ng-model="SkillSet.detailles[$index]" quick-edit ng-change="update(SkillSet,'loisir')"></span>
+                                            </div>
+                                    </li>
+
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+    </div>
+    <div data-ng-include=" 'tpl/blocks/settings.html' " class="settings panel panel-default">
+
+    </div>
+
+
+
+

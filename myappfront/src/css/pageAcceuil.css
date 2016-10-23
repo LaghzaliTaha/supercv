@@ -1,0 +1,84 @@
+#pageAcceuil{
+    font-family: 'Roboto', sans-serif;
+    color: #545E6C;
+    background-color:white ;
+    font-size: 14px;
+    padding-top: 100px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    height: 1000px;
+    width: 100%;
+
+}
+@font-face {
+    font-family: "mochary";
+    src: url('../fonts/Mochary_PERSONAL_USE_ONLY.ttf');
+}
+.wrap{
+    position: relative;
+}
+.wrap > h1 {
+    margin: 26px auto;
+}
+#showcase img{
+    height: 330px;
+    width: 230px;
+    border: 1px;
+
+}
+#showcase {
+    height: 460px;
+    width: 100%;
+    background: #16235e;
+    padding-left: 80px;
+}
+#item-title {
+    color: #F31414;
+    font-size: 29px;
+    letter-spacing: 0.13em;
+    text-shadow: 1px 1px 6px #C72B2B;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 22px;
+}
+#nav {
+    text-align: center;
+}
+#nav > button {
+    width: 64px;
+    height: 36px;
+    color: #666;
+    font: bold 16px arial;
+    text-align: center;
+    margin: 5px;
+    text-shadow: 0px 1px 0px #f5f5f5;
+    background: #f6f6f6;
+    border: solid 2px rgba(0, 0, 0, 0.4);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+#nav > button:active,
+#nav > button.down {
+    background: #dfdfdf;
+    border: solid 2px rgba(0, 0, 0, 0.6);
+    box-shadow: none;
+}
+
+.left{
+    position: absolute;
+    z-index: 99999;
+    top: 200px;
+    left: 20px;
+}
+.right{
+    position: absolute;
+    z-index: 99999;
+    top: 200px;
+    right: 20px;
+}
